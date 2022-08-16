@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if messages %}
+<div class="p-t-15 text-center">
+  {% for i in messages %}
+  <h5 class="text-success fw-bold fs-5">{{ i }}</h5>
+  {% endfor %}
+</div>
+{% endif %}
+<div class="page-wrapper bg-gra-02 p-b-100 font-poppins " style="padding-top: 60px;">
+    <div class="wrapper wrapper--w1000">
+        <div class="container">
+            <table class="table bg-white">
+                <thead>
+                  <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">GENDER</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">PHONE NUMBER</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    {% for i in data %}
+                    {% if i.usertype != 'admin' %}
+                  <tr>
+                    <th scope="row">{{ i.id }}</th>
+                    <td class="text-uppercase">{{ i.first_name}}</td>
+                    <th scope="row">{{ i.gender }}</th>
+                    <th scope="row">{{ i.email }}</th>
+                    <th >{{ i.birthday }}</th>
+                    <td>+ 91 {{ i.phone }}</td>
+                    <td>
+                      <a href="{% url 'edit' uid=i.id %}?uid=i.id" >
+                        <i class="bi bi-pencil-square "></i>
+                      </a>
+                      <a href="{% url 'delete' uid=i.id %}?uid=i.id" class="ms-3">
+                        <i class="bi bi-trash3" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                </tbody>
+              </table>
+              
+        </div>
+    </div>
+</div>
+
+{% endblock %}

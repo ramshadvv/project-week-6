@@ -1,0 +1,76 @@
+{% extends 'base1.html' %}
+{% block content %}
+
+{% if messages %}
+<div class="p-t-15 text-center pb-2">
+    {% for i in messages %}
+    <h5 class="text-success fw-bold fs-5">{{ i }}</h5>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h3 class="title">PROFILE</h3>
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">first name</label>
+                            <input class="input--style-4" type="text" name="first_name" value="{{ data.first_name }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">last name</label>
+                            <input class="input--style-4" type="text" name="last_name" value="{{ data.last_name }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label" style="padding-right : 35px">Birthday</label>
+                            <input class="input--style-4" type="text" name="last_name" value="{{ data.birthday }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label"style="padding-right : 35px">Gender</label>
+                            <input class="input--style-4" type="text" name="last_name" value="{{ data.gender }}" readonly>
+  
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-space">
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Email</label>
+                            <input class="input--style-4" type="email" name="email" value="{{ data.email }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Phone Number</label>
+                            <input class="input--style-4" type="text" name="phone" value="{{ data.phone }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-t-15">
+                    <a href="{% url 'useredit' uid=data.id %}?uid=data.id" class="text-decoration-none">
+                    <button class="btn btn--radius-2 btn--blue" type="submit">Edit</button></a>
+                </div>
+                <!-- <div class="p-t-15">
+                    {% for i in messages %}
+                    <h5 class="text-danger">{{ i }}</h5>
+                    {% endfor %}
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
