@@ -10,6 +10,7 @@
                 <span></span>
                 <button class="navbar-toggler navbar-toggler-end collapsed justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  {% if user.is_authenticated %}
                   <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item mx-2">
                       <!-- Link--><a class="nav-link text-uppercase active" href="{% url 'home' %}">Home</a>
@@ -17,7 +18,7 @@
                     <li class="nav-item mx-2">
                       <!-- Link--><a class="nav-link text-uppercase" href="{% url 'register' %}">Sign UP</a>
                     </li>
-                    {% if user.is_authenticated %}
+                    
                     <li class="nav-item mx-2">
                       <!-- Link--><a class="nav-link text-uppercase" href="{% url 'logout' %}">Logout</a>
                     </li>
