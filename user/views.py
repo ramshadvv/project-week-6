@@ -1,5 +1,3 @@
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -85,9 +83,9 @@ def home(request):
         if 'search' in request.GET:
             sh = request.GET['search']
             multiple_sh = Q(Q(first_name__icontains=sh) | Q(email__contains=sh))
-            item = User.objects.filter(multiple_sh)
+            item = User.objects.filter(multiple_sh).order_by("id")
         else:
-            item = User.objects.all()
+            item = User.objects.all().order_by("id")
         return render(request, 'index.html',{'data':item})
 
     if 'user_id' in request.session:
