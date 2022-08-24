@@ -6,8 +6,6 @@ from django.db.models import Q
 # Create your views here.
 j=1
 def user_login(request):
-    if 'admin_id' in request.session:
-        return redirect(home)
 
     if 'user_id' in request.session:
         return redirect(userprofile)
@@ -95,8 +93,6 @@ def home(request):
 
 # userprofile
 def userprofile(request):
-    if 'admin_id' in request.session:
-        return redirect(home)   
     sess = request.session['user_id']
     item=User.object.get(email=sess)
     return render(request, 'profile.html',{'data' : item})
